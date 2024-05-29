@@ -4,17 +4,21 @@ import SearchBar from './SearchBar.vue';
 export default {
   components: {
     SearchBar
+  },
+  methods: {
+    handleSearch(query) {
+      this.$emit('search', query);
+    }
   }
 }
 </script>
 
 <template>
   <nav class="navbar">
-    <h1>Boolflix</h1>
-    <SearchBar />
+    <h1>BoolFlix</h1>
+    <SearchBar @search="handleSearch" />
   </nav>
 </template>
-
 <style scoped>
 .navbar {
   display: flex;

@@ -1,14 +1,23 @@
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            query: ''
+        };
+    },
+    methods: {
+        search() {
+            this.$emit('search', this.query);
+        }
+    }
+}
 </script>
-
 <template>
     <div class="search-bar">
-        <input placeholder="Cerca un film..." />
-        <button>Search</button>
+        <input v-model="query" @keyup.enter="search" placeholder="Cerca un film..." />
+        <button @click="search">search</button>
     </div>
 </template>
-
 <style scoped>
 .search-bar {
     display: flex;

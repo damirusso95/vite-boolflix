@@ -6,18 +6,31 @@ export default {
   components: {
     NavBar,
     MovieList
+  },
+  data() {
+    return {
+      movies: []
+    };
+  },
+  methods: {
+    async fetchMovies(query) {
+      const apiKey = 'a703c03fadaef93da97b114d84d7c5a1'; 
+      const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`);
+      const data = await response.json();
+      this.movies = data.results;
+    }
   }
 }
 </script>
 
 <template>
   <div id="app">
-    <NavBar />
-    <MovieList />
+    <NavBar @search="fetchMovies" />
+    <MovieList :movies="movies" />
   </div>
 </template>
 
-<style scoped>
+<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
