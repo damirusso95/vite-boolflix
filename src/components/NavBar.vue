@@ -6,8 +6,11 @@ export default {
     SearchBar
   },
   methods: {
-    handleSearch(query) {
-      this.$emit('search', query);
+    handleSearchMovies(query) {
+      this.$emit('search-movies', query);
+    },
+    handleSearchTv(query) {
+      this.$emit('search-tv', query);
     }
   }
 }
@@ -15,10 +18,11 @@ export default {
 
 <template>
   <nav class="navbar">
-    <h1>BoolFlix</h1>
-    <SearchBar @search="handleSearch" />
+    <h1>Boolflix</h1>
+    <SearchBar @search-movies="handleSearchMovies" @search-tv="handleSearchTv" />
   </nav>
 </template>
+
 <style scoped>
 .navbar {
   display: flex;

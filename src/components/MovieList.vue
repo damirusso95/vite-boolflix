@@ -1,7 +1,8 @@
 <script>
 export default {
     props: {
-        movies: Array
+        items: Array,
+        type: String
     },
     methods: {
         getPosterUrl(path) {
@@ -10,15 +11,14 @@ export default {
     }
 }
 </script>
-
 <template>
     <div class="movie-list">
-        <div v-for="movie in movies" :key="movie.id" class="movie-item">
-            <img :src="getPosterUrl(movie.poster_path)" alt="Movie poster" />
-            <h3>{{ movie.title }}</h3>
-            <p><strong>Original Title:</strong> {{ movie.original_title }}</p>
-            <p><strong>Language:</strong> {{ movie.original_language }}</p>
-            <p><strong>Rating:</strong> {{ movie.vote_average }}</p>
+        <div v-for="item in items" :key="item.id" class="movie-item">
+            <img :src="getPosterUrl(item.poster_path)" alt="Poster" />
+            <h3>{{ item.title }}</h3>
+            <p><strong>Original Title:</strong> {{ item.original_title }}</p>
+            <p><strong>Language:</strong> {{ item.original_language }}</p>
+            <p><strong>Rating:</strong> {{ item.vote_average }}</p>
         </div>
     </div>
 </template>

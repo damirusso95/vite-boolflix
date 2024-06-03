@@ -6,16 +6,20 @@ export default {
         };
     },
     methods: {
-        search() {
-            this.$emit('search', this.query);
+        searchMovies() {
+            this.$emit('search-movies', this.query);
+        },
+        searchTv() {
+            this.$emit('search-tv', this.query);
         }
     }
 }
 </script>
 <template>
     <div class="search-bar">
-        <input v-model="query" @keyup.enter="search" placeholder="Cerca un film..." />
-        <button @click="search">search</button>
+        <input v-model="query" @keyup.enter="searchMovies" placeholder="Search for a movie or TV show..." />
+        <button @click="searchMovies">Search Movies</button>
+        <button @click="searchTv">Search TV Shows</button>
     </div>
 </template>
 <style scoped>
@@ -32,6 +36,7 @@ export default {
 
 .search-bar button {
     padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
     background-color: #e50914;
     color: white;
     border: none;
